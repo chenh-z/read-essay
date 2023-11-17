@@ -1,0 +1,35 @@
+A Survey on EEC
+2 Emerging Computing Paradigms and Evaluation Criterions
+新型计算范式和评估方案
+address massive data computation -> propose computing paradigms
+处理大量数据计算->提出计算范式
+common place: computing huge amount of data &&  storage tasks from heterogeneous tasks
+相同点：计算大量数据&&存储异构设备的任务
+difference: TC OS level, other three on virtualization and containerization solutions
+不同点：透明计算分布在操作系统层级，其他三种专注于虚拟化和集中化解决方案
+2.1 Transparent Computing
+      透明计算
+Reason of been proposed: decouple software(e.g OS) from the heterogeneous hardware of IoT devices
+被提出的原因：可以从硬件异构化的物联网设备中解构软件
+Purpose: 1)serve users in an 'transparent' way-- Devices can choose devices from servers on demand without considering the details of provision of this services.
+特点：1）以一种" 透明“的方式为用户服务，即设备可以按需从服务器选择服务而不需要考虑提供服务的细节
+Characteristic:
+特性：
+1)Working in a client-server mode, TC intergrates the distributed devices to one system across the network. The systems provides services according to capabilities of devices and the conditions of the network. The server side provide elastic services and management of centralized resource
+    以客户端=服务器模式工作。TC通过网络整合资源为一个系统。这个系统根据设备可用性和网络状况提供服务。服务器端提供弹性服务和中心化资源管理。
+2)An on-demand service loading and execution architecture: It's bulit by TC to spilt the software from hardware of heterogeneous client devices， which empower clients devices to ecexute cross-platform services via  networks from remote servers
+   一种按需加载服务和执行结构：它由TC建立，旨在将异构客户端设备的软硬件分离， 这推动了客户端设备通过网络从远程服务器执行跨平台服务的能力。
+3)Execution in a block-streaming way: when users request for a service, only the related code of this services will be loaded and executed, instead of lhe whole software.
+  以一种块流方式执行：当用户请求服务的时候，只加载和执行服务相关的代码，而不是整个软件。
+Figure 1: one typical implementation of TC
+useful figure 1 in cite 173
+2.5 关于相同点和不同点的讨论
+表1：
+位置：TC-终端设备和附近设备 MEC-基站和附近设备 Fog-路由路径上的设备 Cloudlet-附近微云 Cloud-中央云
+虚拟化：TC-MetaOS MEC&&Fog-VM和容器 微云和云-VM
+研究重点：TC-跨平台和按需服务等 MEC&&Fog-上行链路计算卸载和下行链路缓存等 微云-计算卸载和虚拟机管理等 云-工作流程调度和虚拟机管理等
+words():
+名词解释（）
+(1)persuasive computing: change or influence attitudes or behaviors by computing technology.
+   说服性计算：通过计算技术，改变或影响态度和表现
+source:https://www.usabilityfirst.com/glossary/persuasive-computing/index.html
