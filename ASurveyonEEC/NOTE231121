@@ -1,0 +1,113 @@
+A Survey on EEC
+1 Introduction
+   绪论
+·In the IoT era, processing large data requires powerful computing devices and fast data transfer rates.
+  物联网时代，需要强大的计算设备来处理海量数据和高数据传输率的链接来传输数据流量。
+·In recent decades, various computing architectures and paradigms have been developed but proved inadequate for the exponential growth in mobile devices and data traffic, leading to the emergence of cloud computing.
+  过去几十年中被设计出的各种计算架构和计算范式无法满足指数级增长的移动设备和数据流量的需求，推动了云计算的出现。
+·Cloud computing offers robust capabilities for addressing computing challenges through centralized computation and storage. But cloud computing, with its centralized setup, struggles with high WAN latency and limited storage, falling short in meeting IoT's low-latency and context-aware needs.
+·云计算通过集中式计算和存储，面对计算挑战提供了强大的能力。但是云计算具有无法接受的WAN延迟，有限的容量和远程集中的工作方式，很难满足对物联网应用鼓舞延迟敏感和上下文感知计算的需求。
+` To solve the advantages of cloud computing, new computing paradigms emergences: transparent computing, fog computing, mobile edge computing and cloudlet. They provides computing resources nearby the end-users, which could provides delay-sensitive and context-aware services without designation of WAN
+·为了解决云计算的缺陷，出现了新的计算范式：透明计算，雾计算，移动边缘计算和微云。他们在终端用户附近提供计算资源，可以提供延迟敏感和上下文感知的服务，而无需设计WAN。
+·但是现有的关于计算范式的研究主要围绕架构和应用，但是没有特别关注层次化结构的研究问题。
+·本文研究了在层次化计算架构下不同网络计算范式关于计算卸载、缓存、安全性和隐私性的比较。
+
+在当今万物互联，物联网到来的时代，需要强大的计算设备来处理海量数据和高数据传输率的链接来传输数据流量。
+过去的几十年中，设计了各种计算架构和计算范式来从互联网侧提供强大的数据流处理能力，但仍然无法满足指数级增长的移动设备和数据流量的需求，这推动了第二代网络计算——云计算的出现。云计算通过集中式的计算和存储资源，提供了强大的计算和存储能力面对计算挑战。但是云计算具有无法接受的WAN延迟，有限的容量和远程集中的工作方式，很难满足对物联网应用鼓舞延迟敏感和上下文感知计算的需求。
+为了解决这些问题，出现了新的计算范式：透明计算，雾计算，移动边缘计算和微云。他们在终端用户附近提供计算资源，可以提供延迟敏感和上下文感知的服务，而无需设计WAN。
+但是，现有的关于计算范式的研究主要围绕架构和应用，但是没有特别关注层次化结构的研究问题。本文研究了在层次化计算架构下不同网络计算范式关于计算卸载、缓存、安全性和隐私性的比较。
+万物互联，物联网时代到来，大量传感器、执行器和移动设备部署在网络边缘。
+未来互联网和无线通信网络的两个关键性能指标：高数据传输率和低延迟交付。这需要强大的计算设备来处理海量数据，和高数据传输率的链接来传输数据流量。
+5G为代表的大规模输入输出和高频通信被视为满足未来无线通信需求的有前景的方法。
+各种计算架构和计算范式被设计出来，为了从互联网侧提供强大的数据流处理能力。现在广泛使用的网络计算可以提供相当大的处理能力，但是仍然无法满足指数级增长的移动设备和数据流量带来的不断增长的需求。
+云计算具有集中式的计算和存储资源，提供了强大的计算和存储能力来应对计算挑战，特别是通过广域网为终端用户提供弹性服务和密集型数据分析，使用户可以在不建设新的计算基础设施的情况下获得感官上近似无限的资源。但是，云计算具有无法接受的WAN延迟和有限的容量流量，很难满足物联网时代延迟敏感型的应用服务的需求。而且，由于云计算远程集中的工作方式，在支持物联网应用上下感知计算方面具有劣势。
+为了解决这些问题，出现了集中新的计算范式：透明计算，雾计算，移动边缘计算和微云。它们在终端用户附近提供计算资源，可以提供对延迟敏感和上下文感知的服务，无需设计WAN。
+现有的关于计算范式的研究主要围绕架构和应用，但是没有特别关注层次化结构的研究问题。本文研究了在层次化计算架构下不同网络计算范式关于计算卸载、缓存、安全性和隐私性的比较。
+层次化结构
+2 Emerging Computing Paradigms and Evaluation Criterions
+新型计算范式和评估方案
+address massive data computation -> propose computing paradigms
+处理大量数据计算->提出计算范式
+common place: computing huge amount of data &&  storage tasks from heterogeneous tasks
+相同点：计算大量数据&&存储异构设备的任务
+difference: TC OS level, other three on virtualization and containerization solutions
+不同点：透明计算分布在操作系统层级，其他三种专注于虚拟化和集中化解决方案
+2.1 Transparent Computing
+      透明计算
+Reason of been proposed: decouple software(e.g OS) from the heterogeneous hardware of IoT devices
+被提出的原因：可以从硬件异构化的物联网设备中解构软件
+Purpose: 1)serve users in an 'transparent' way-- Devices can choose devices from servers on demand without considering the details of provision of this services.
+特点：1）以一种" 透明“的方式为用户服务，即设备可以按需从服务器选择服务而不需要考虑提供服务的细节
+Characteristic:
+特性：
+1)Working in a client-server mode, TC intergrates the distributed devices to one system across the network. The systems provides services according to capabilities of devices and the conditions of the network. The server side provide elastic services and management of centralized resource
+    以客户端=服务器模式工作。TC通过网络整合资源为一个系统。这个系统根据设备可用性和网络状况提供服务。服务器端提供弹性服务和中心化资源管理。
+2)An on-demand service loading and execution architecture: It's bulit by TC to spilt the software from hardware of heterogeneous client devices， which empower clients devices to ecexute cross-platform services via  networks from remote servers
+   一种按需加载服务和执行结构：它由TC建立，旨在将异构客户端设备的软硬件分离， 这推动了客户端设备通过网络从远程服务器执行跨平台服务的能力。
+3)Execution in a block-streaming way: when users request for a service, only the related code of this services will be loaded and executed, instead of lhe whole software.
+  以一种块流方式执行：当用户请求服务的时候，只加载和执行服务相关的代码，而不是整个软件。
+Figure 1: one typical implementation of TC
+useful figure 1 in cite 173
+2.5  Discussion of the Similarities and Differences
+     关于相同点和不同点的讨论
+表1：
+位置：TC-终端设备和附近设备 MEC-基站和附近设备 Fog-路由路径上的设备 Cloudlet-附近微云 Cloud-中央云
+虚拟化：TC-MetaOS MEC&&Fog-VM和容器 微云和云-VM
+研究重点：TC-跨平台和按需服务等 MEC&&Fog-上行链路计算卸载和下行链路缓存等 微云-计算卸载和虚拟机管理等 云-工作流程调度和虚拟机管理等
+正文：
+Motivation: TC-address the heterogeneities of end-devices users, and support different OS and across-platform applications. Fog,MEC,Cloudlet- aiming to execute data in proximity to end-devices to reduce response delay, improving the efficent of network.
+动机：TC-解决IoT中各种终端用户的异构性、支持不同操作系统和跨平台应用软件。Fog,MEC,微云-旨在终端设备附近处理数据，以减少响应延迟，提高用户体验和网络效率。
+Security: TC-using computation capabilities of end-devices and edge-servers to provide safe service to IoT devices. Fog,MEC,Cloudlet- proterting computation environment of edge-servers, and offloading safe burdens from end-devices to edge-servers. 
+安全：TC-利用终端设备和边缘服务器的计算能力为IoT设备提供安全服务。Fog,MEC,微云-保护边缘服务器的计算环境，将安全负担从终端设备卸载到边缘服务器。
+2.6  Evaluation Criteria
+       评判标准
+The full benefits of the aforementioned emerging computing paradigms are leveraged on some
+common performance criteria for investigating the architecture and the optimization algorithms
+of these networks
+利用上述新兴评价范式的优点，用一些相同的性能评价标准研究网络架构和优化算法
+Criterion:
+标准：
+1.Needs of supporting heterogeneity of resources: It needs to consider the capabilitied of computation and storage on diffirent access nodes of edge-network to design computation architeture and optimization algorithm.
+   支持资源的异质性的需求：需要考虑到网络边缘不同访问节点和终端用户在计算和存储能力上的异质性，设计计算架构和优化算法。
+2. Stringnet QoS requirement in emerging computation paradigms: improve data transmission rate while reduce lantancy of data delivery
+  新兴计算范式中的严格服务质量要求：提高数据传输率的同时降低数据传输延迟。
+3. Need of elastic scalability: Emerging computing paradigms need to satisfy the end-users' request in low latency, high data transmission rate and high energy effiency. Meanwhile, it's necessary for these paradigms and corresponding algorithms to have the ability in adapt the change of network scale.
+    弹性可扩展性的需求：需要新兴计算范式满足物联网环境下大量终端用户对低延迟、高数据传输率和高能效的需求。同时，这些范式和相应算法还需要拥有适应网络规模变化的能力。
+4. Whether computing paradigms support mobility:  Mainly about the influence of perfomance of communication system by movement of vehicles in IoV. Frequently changing channel should be seriously considered. 
+   计算范式是否支持移动性：主要是车联网中车辆的移动影响通信系统的性能，特别是频繁变化的信道需要被慎重考虑。
+5.The need of federation and interoperability: It needs to design good data and control interface, achieving interoperability between diffirent level providers and architecture in the condition of edge servers which have geographically distributed deployment on a wide scale and provide for different owners.
+   对联邦和互操作性的需求：需要设计良好的数据和控制接口，在广泛的地理区域部署的边缘服务器和提供不同所有者的条件下实现不同级别的提供商和架构的互操作性。
+3 Computation Offloading for Emerging Commputing Paradigms
+   新兴计算范式的计算卸载
+Computation offloading has benn regarded as a promising solution, which is used to liberate mobile devices from limited computation ability and energy provision, and coordinate the resourses in end-edge-cloud computation paradigms.
+计算卸载(2)被视为一种有前景的解决方案， 用于从有限的计算能力和能源供应中解放移动设备，有效协调端-边-云编排计算范式中的计算资源。
+In this chapter, the existing essays are divided into three caregorizes: minimize energy consumption, minimize delay, and jointly optimizion in energy consumption and delay.
+本章根据现有文献的目标将它们分为三类：最小化能源消耗、最小化延迟、能源消耗和延迟的联合优化。
+3.1 Minimize energy consumption
+     最小化能源消耗
+· Research in conservation energy computation offloading 
+  节能的计算卸载相关研究
+  1.Energy consumption and CO2 emissions: prompt researchers develop energy saving conputation offloading strategies
+     能源消耗和二氧化碳排放问题：促使研究者开发节能的计算卸载策略
+  2.Designation of energy saving offloading strategies scheme: different research propose  serval offloading schemes to keep balance between computation and communication and to reduce energy consumption in MD
+    节能卸载方案的设计：不同的研究提出了各种计算卸载方案，以在计算和通信之间取得平衡，降低移动设备（MD）的能源消耗。
+  3.multisite offloading scheme: Some researches propose a scheme to offload tasks to serval servers( including cloud and edge server), which can optimize energy consumption and reduce execution time.
+     多站点卸载方法：一些研究提出了向多个服务器（包括云服务器和边缘服务器）卸载任务的方法，以优化能源消耗和减少执行时间。
+  4.A offloading decision architecture considering about dynamic in wireless connection and avaiable resource in servers: used to choose besr resources proders and exection strategies.
+     考虑无线连接的动态变化和服务器上可用的计算资源的卸载决策框架：用于选择最佳的资源提供者和执行策略。
+  5. Research in energy awareness offloading scheme: These schemes can dynamically adjust according to actual condition to minimize energy consumption and response time.
+     能源感知卸载方法：一些研究关注于能源感知的卸载方法，这些方法能够根据实际条件动态调整，以最小化能源消耗和响应时间。
+  6.
+     自适应功率控制和可再生能源利用：以进一步减少能源消耗。
+  7.Providing electronic from energy collected from energy energy source, further prolong their lifetime.
+   由环境能源来源收集的能量供电，进一步延长寿命
+  8. Across time slot task execution: Considering about that the execution of tasks  might be across serveral time slots, a optimization method that dividing tasks into smaller sub-tasks.
+     跨时间槽任务处理：还有研究考虑到任务执行可能跨越多个时间槽，提出了将任务分解为更小的子任务来优化处理。
+words():
+名词解释（）
+(1)persuasive computing: change or influence attitudes or behaviors by computing technology.
+   说服性计算：通过计算技术，改变或影响态度和表现
+source:https://www.usabilityfirst.com/glossary/persuasive-computing/index.html
+(2)Computation Offloading: is to offload computing tasks of mobile terminal to edge cloud environment, have a solution on insufficient of devices in resource storage, computation performance and energy suffience.
+    计算卸载：是将移动终端的计算任务卸载到边缘云环境中，解决了设备在资源存储、计算性能以及能效等方面存在的不足。
+source：https://zhuanlan.zhihu.com/p/83024975
