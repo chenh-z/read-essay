@@ -31,8 +31,41 @@ To bridge the 2: static-time component and run-time system.
 
 1.data center app more fine-grained
 Fg computation units easier to scale and utilize d-c's hardware reasources
-When couple with manageme layer, users can leave burden to provide.
-Because above benefirs, f-g computing model are expected to keep wider adoption or become defalut comp. paradigms.
+When couple with management layer, users can leave a burden to provide.
+Because above benefits, f-g computing model are expected to keep wider adoption or become defalut comp. paradigms.
 Hence, more exist app or sys software to small DAG-based parts.
+
+2.Data center hardware infrastructure: more heterogeneous and progeammable
+Cuz CPU meet its limitation, acceletators be deployed widely in major data centers.
+Today's accelerators fully or partly programmable
+Network resources: heterogeneous and programmable
+Programmable switches and SmartNICs into data center.
+
+3.Cuz old data center architecture make it difficlut to deploy and manage software and hardware, some major data centers to adopt 'resource disaggregation'(a new data-center atchitecture,etc. RD)
+Idea of RD: organize each type hardware resources to a separate resource pool ,and allow apps to take any from a pool.
+A Example
+
+4.Three questions in today's disaggregation solutions:
+1)What is a generic disaggregation design which fit heterogeneous types resources
+2)How to efficiently connect disaggregated devices?
+3)How to best map apps to a disaggregated hardware platform?
+
+5.If above problem be solved, evolve DC into fully disaggregated and programmable.
+This paper devide general goal to 4 sub prob(in figure 1)
+
+6.1st sub prob:we need to decide how users can program and run apps
+ on a FDP-DC
+ 2types abstraction, FDP-DC can choose 1-2
+ 1)backward-compatible, assume run on a VM or serverless model
+ 2)expose the underlying disaggregated and programmable nature to apps
+
+ 
+ 
+
+
+
+
+
+
 
 
