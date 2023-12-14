@@ -77,6 +77,34 @@ Use MLIR[Q2] to decompose program to smaller codelets.
 To dictate the execution order of codelets: use a companion DAG
 Compiler further add features to DAG edges.
 
+9.
+Lack: FDP-DC's runtime system(etc. OS)
+FDP-DC OS: Supervise all source and OS; reflect(schedule) code blocks DAG to base infrastructure
+When schedule:use hint from compiler
+And choose appropriate to initiate code blocks, supervise load(maybe transfer code blocks by load's variation)
+
+10. To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
+
+11. Potential route: to provide data center designers to conctruct a fully disaggreated and programmable data center.
+
+## 2 Background and Related Works
+
+In programmable/reconfigurable networks, resource disaggregation and programming models.
+
+### 2.1 Programmable and Reconfigurable Network
+
+
+## 4 Conclusion
+
+4 solutions:
+
+easily available abstraction
+
+flexible compiler optimization
+
+scalable system management 
+
+high efficient programmable hardware.
 
 # Q&A:
 ## Q1. What is FDP-DC?
