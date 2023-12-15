@@ -93,6 +93,33 @@ In programmable/reconfigurable networks, resource disaggregation and programming
 
 ### 2.1 Programmable and Reconfigurable Network
 
+## 3 FDP-DC Design
+
+All devices & networking hardware programmable and disaggregated from each other.
+Network topology can be reconfigured to best match
+
+FDP-DC: 4 components
+Then, discuss in details.
+
+### 3.1 Abstractions and Usage Models
+
+2 abstraction:
+
+Propperties : 
+·all devices and network hardware is programmable and disaggrated each other
+·Network topology can be dynamically reconfigured to match the workload's requirements
+
+Figure 1: FDP-DC 4 componements solutions
+·Abstraction && complier components : users facing and aims to enhance useability of FDP-DC
+·OS && hardware infrastructure : building blocks of FDP-DC and environment executes complier output.
+
+More Details:
+
+### 3.1 
+
+#### Transparent abstraction
+
+
 
 ## 4 Conclusion
 
