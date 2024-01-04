@@ -7,15 +7,40 @@
 2 trends in data centers:
 1)application more fine-grained
 2)data-center hardware heterogeneous and customized to diffierent computing needs
-Several major data center go towards disaggregated architecture(different hardware resources are organized independently and network-attached pools) because of the 2 trends.
+Because of the 2 trends and better managability, Serval major data center is becoming disaggregated architecture where hardware resources are organized as individual and network-conncted resources pool.
 But, today data centers still server-centric, rely on traditional CPU-based servers.
 
 数据中心的2个趋势：
 1）应用程序更细化
 2）数据中心硬件异构，并且为不同的计算定制。
-由于这两个趋势，几个不同的数据中心走向分离的结构（不同的硬件资源被独立地组织为网络连接池）
+由于这两个趋势和便于管理，一些主要数据中心正在转向硬件资源被组织成独立的、网络连接的资源池的分散架构
 但是，目前数据中心仍然服务器中心化，依赖传统的基于CPU的服务器。
 
+Our work: further explore probability of building a fully disaggregated data center.
+
+本文工作：进一步探索构建一个完全分解的数据中心的可能性。
+
+Feature: Each type of resource disaggregatability.
+
+特征：每一种类的资源可分解
+
+Other work :Discuss the requirements and implements in making each disaggregated devices programmable.
+其他工作：探讨使每个分解设备可编程的要求和影响，并问数据中心设计者提供了指导原则和初步解决方案。
+
+Specifical achievement: Decompose 4 main problems to 4 sub-problems and provide each solutions.
+具体实现：将主要问题分解为四个子问题并提出各自的解决方案。
+
+Top layer: explore 2 types of abstractions, propose a disaggregate-native design method.
+顶层：探索两种类型的抽象，提出了一种以分解为本的设计方法。
+
+Bottom layer: describe the hardware and key feature in building disaggregated devices and network infrastructure to connect them.
+底层：描述了构建分解设备所需的硬件和关键特性，以及连接这些设备的网络基础设施。
+
+To connect top and bottom, propose a static-time unit, which through a disaggregate-native intermediate representation to compile different user application to heterogenous disaggregated devices.
+为连接底层和顶层，提出了一个静态时间组件，通过一种以分解为本的中间表示将不同用户程序编译到异构分解设备中。
+
+Propose a runtime system to manage hardware resources and schedule compiler generated execution units.
+提出了一种运行时系统，用于管理硬件资源和调度编译器生成的执行单元
 
 Works:
 工作：
