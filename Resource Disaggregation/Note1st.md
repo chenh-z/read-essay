@@ -62,11 +62,9 @@ To bridge the 2: static-time component and run-time system.
 
 ## 1 Introduction
 
-1.data center app more fine-grained
-Fg computation units easier to scale and utilize d-c's hardware reasources
-When couple with management layer, users can leave a burden to provide.
-Because above benefits, f-g computing model are expected to keep wider adoption or become defalut comp. paradigms.
-Hence, more exist app or sys software to small DAG-based parts.
+Drastic development of hardware and software in data center:1. application becomes fine-grained: Driven by microservices software model and the cloud serverless computing paradigm, easier to scale and utilize hardware resources in data center efficently.
+
+数据中心的软件和硬件大发展：1.应用程序细粒化：由微服务软件模型和云无服务计算范式驱动，更容易扩展和高效应用数据中心硬件资源。
 
 2.Data center hardware infrastructure: more heterogeneous and progeammable
 Cuz CPU meet its limitation, acceletators be deployed widely in major data centers.
