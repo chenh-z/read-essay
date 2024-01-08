@@ -66,15 +66,18 @@ Drastic development of hardware and software in data center:1. application becom
 
 数据中心的软件和硬件大发展：1.应用程序细粒化：由微服务软件模型和云无服务计算范式驱动，更容易扩展和高效应用数据中心硬件资源。
 
-2.Data center hardware infrastructure: more heterogeneous and progeammable
+
+2.Data center hardware infrastructure become more heterogeneous and progeammable
 Cuz CPU meet its limitation, acceletators be deployed widely in major data centers.
 Today's accelerators fully or partly programmable
 Network resources: heterogeneous and programmable
-Programmable switches and SmartNICs into data center.
 
-3.Cuz old data center architecture make it difficlut to deploy and manage software and hardware, some major data centers to adopt 'resource disaggregation'(a new data-center atchitecture,etc. RD)
-Idea of RD: organize each type hardware resources to a separate resource pool ,and allow apps to take any from a pool.
-A Example
+2.数据中心的硬件基础设施变得更加异构化和可编程化
+由于CPU受到局限，加速器正在主要数据中心大规模部署。如今的许多加速器时完全可编程或者部分可编程。除了计算资源外，网络资源也变得更加异构化和可编程。
+
+
+However, data center architecture keep remained: severs connect by data-center-wide network. But the 
+但是，数据中心的架构在过去几十年内保持不变：即服务器通过数据中心范围的网络连接。然而，当今软硬件的细粒度和多样性使得在基于服务器的数据中心中部署和管理困难。因此，移除了一种称为资源分解[1]的新数据中心架构。
 
 4.Three questions in today's disaggregation solutions:
 1)What is a generic disaggregation design which fit heterogeneous types resources
@@ -161,6 +164,9 @@ high efficient programmable hardware.
 ## A1:
 ## Q2. What is MLIR ？
 ## A2. Multi-Level Intermediate Representation(MLIR), A novel approach to building reusable and extensible compiler infrastructure[39]. Its aim is to solve software fragment problem, improve the compilation efficiency of heterogeneous hardware, significantly reduce the cost of building specific domain complier, connect existing compiler together.
+
+
+[1]资源分解：将每种类型的硬件资源组织成一个单独的资源池，并允许应用程序从池中使用任何资源。
 
 
 
