@@ -76,7 +76,7 @@ Network resources: heterogeneous and programmable
 由于CPU受到局限，加速器正在主要数据中心大规模部署。如今的许多加速器时完全可编程或者部分可编程。除了计算资源外，网络资源也变得更加异构化和可编程。
 
 
-However, data center architecture keep remained: severs connect by data-center-wide network. But the 
+However, data center architecture keep remained: severs connect by data-center-wide network. But the fine-grained and variety makes data center based on servers difficult to deploy and manage. Therefore, proposing a new data center architecture named resource disaggregation.
 但是，数据中心的架构在过去几十年内保持不变：即服务器通过数据中心范围的网络连接。然而，当今软硬件的细粒度和多样性使得在基于服务器的数据中心中部署和管理困难。因此，移除了一种称为资源分解[1]的新数据中心架构。
 
 4.Three questions in today's disaggregation solutions:
@@ -84,8 +84,14 @@ However, data center architecture keep remained: severs connect by data-center-w
 2)How to efficiently connect disaggregated devices?
 3)How to best map apps to a disaggregated hardware platform?
 
-5.If above problem be solved, evolve DC into fully disaggregated and programmable.
+尽管分解方案取得了成功，但是仍然有三个开放性问题：1.如何分解加速器、网络设备等其他类型的资源？2.如何有效连接分解的设备？ 3，如何最佳地将应用程序映射到分解的硬件平台？
+
+
+If above problem be solved, evolve DC into fully disaggregated and programmable.
 This paper devide general goal to 4 sub prob(in figure 1)
+
+如果这些挑战得到解决，我们可以将数据中心发展为完全分解和可编程的。本文提供了一些指导原则，提出了建立这样一种数据中心的潜在方案，并将总体目标分解为四个子问题，如图1所示。
+
 
 6.1st sub prob:we need to decide how users can program and run apps
  on a FDP-DC
