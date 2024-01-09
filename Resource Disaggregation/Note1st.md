@@ -116,15 +116,21 @@ Compiler further add features to DAG edges.
 
 The 3rd sub-problem: Develop infrastructure in FDP-DC. Proposing guideline and 3 key features: network connect, hardware abstraction, multi-user isolation/security. Devices also have ability to provide programmable and configurable.
 第三个问题：在FDP-DC中构建硬件基础设施。提供了指导方针，确定了三个关键特性：网络连接性、硬件虚拟化、多用户隔离/安全性。设备也可以提供一定的可编程性或可配置性。
-We propose a network design to connect disaggregated devices: imaging a reconfigurable network topology architecture, using circuits switch and/or packet switch with cut-through forwarding. Above that, we propose a programmable network 
+We propose a network design to connect disaggregated devices: imaging a reconfigurable network topology architecture, using circuits switch and/or packet switch with cut-through forwarding. Above that, we propose a programmable network infrastructure that be composed by 
 我们提出了一个用于连接分解设备的网络设计：设想了一个可重配置的网络拓扑结构，借助电路交换和/或具有直通转发功能的分组交换来实现。在这之上，提出了一种由可编程交换机和多宿主SmartNICs组成的可编程网络基础设施，应用程序代码块和提供者管理任务可以卸载到这些设备上。我们进一步将这些多宿主smartNICs集中到一个池中，有效地分解了网络功能。
 
 
 在应用程序、编译器和硬件基础设施到位的情况下，最后缺失的部分是FDP-DC操作系统。FDP-DC操作系统将监督所有资源池和网络系统，并将代码块通过DAG映射（调度）到底层基础设施。在调度时，它将使用编译器提供的提示。
 
-10. To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
+ To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
 
-11. Potential route: to provide data center designers to conctruct a fully disaggreated and programmable data center.
+为了说明上述四个组件如何协同工作，我们简要讨论一个数据处理系统的端到端开发和执行流程。首先，系统开发者可以为每个操作符天价注释，指明它需要什么资源，是否打算在加速器上运行等。而且，他们还会将处理流程捕获为操作符的DAG。然后，我们的编译器将基于操作符的DAG生成代码块和它的DAG。在这个过程中，我们的编译器会决定代码块的范围并为异构设备编译每个代码块为多个二进制文件。在运行时，我们的操作系统将根据资源可用性调度代码块DAG，并动态选择硬件设备来运行代码块。操作系统还将使用DAG边信息来决定工作负载的网络拓扑和网络策略。根据网络拓扑，操作系统可能决定在可编程网络设备上执行某些代码块。最后网络设备将在一个虚拟化和隔离的环境中执行每个代码块。
+
+
+Potential route: to provide data center designers to conctruct a fully disaggreated and programmable data center.
+
+本文概述了数据中心设计者构建要给完全分解和可编程数据中心的一条可能路径。
+
 
 ## 2 Background and Related Works
 
@@ -139,6 +145,15 @@ Network topology can be reconfigured to best match
 
 FDP-DC: 4 components
 Then, discuss in details.
+
+
+在FDP-DC中，所有设备和网络硬件都是可编程和互相分离的。此外，网络拓扑可以被动态重置来匹配工作负载的需求。
+
+图1：四个组成部分的FDP-DC方案。
+
+抽象和编译器组成：面向用户，增强FDP-DC的可用性。
+
+操作系统和硬件基础设施：FDP-DC的组成模块，和执行编译器输出的环境。
 
 ### 3.1 Abstractions and Usage Models
 
