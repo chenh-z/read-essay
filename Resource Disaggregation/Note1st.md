@@ -93,13 +93,16 @@ This paper devide general goal to 4 sub prob(in figure 1)
 如果这些挑战得到解决，我们可以将数据中心发展为完全分解和可编程的。本文提供了一些指导原则，提出了建立这样一种数据中心的潜在方案，并将总体目标分解为四个子问题，如图1所示。
 
 
-6.1st sub prob:we need to decide how users can program and run apps
+1)we need to decide how users can program and run apps
  on a FDP-DC
  2types abstraction, FDP-DC can choose 1-2
  1)backward-compatible, assume run on a VM or serverless model
  2)expose the underlying disaggregated and programmable nature to apps
 
-8.2nd problem:how to map apps to FDP to the FDP-DC hardware and sys infrasturcture
+第一个子问题：FDP-DC的抽象，即决定用户如何在FDP-DC上编程和运行他们的应用程序。设想了两种类型的抽象，可以选择其中1-2种。第一种：向下兼容的，分解或可编程硬件无意识的虚拟机或无服务器模型。第二种：一定程度上向应用程序暴露了FDP-DC的底层分解和可编程特性。
+
+
+2nd problem:how to map apps to FDP to the FDP-DC hardware and sys infrasturcture
 Compare to traditional server setting:
 Similarity: FDP-DC needs compiler
 Difference: apps and hardware heterogeneous in FDP-DC
@@ -109,11 +112,15 @@ Use MLIR[Q2] to decompose program to smaller codelets.
 To dictate the execution order of codelets: use a companion DAG
 Compiler further add features to DAG edges.
 
-9.
-Lack: FDP-DC's runtime system(etc. OS)
-FDP-DC OS: Supervise all source and OS; reflect(schedule) code blocks DAG to base infrastructure
-When schedule:use hint from compiler
-And choose appropriate to initiate code blocks, supervise load(maybe transfer code blocks by load's variation)
+第二个问题：如何将应用程序映射到FDP-DC的硬件和系统基础设施上。为了轻松管理FDP中应用程序和硬件的异构性，提出使用中间表示（Intermidate representaion, IR）作为中间层。IR是调度和执行的单元。除了代码和数据，我们在每个代码块中封装了各种执行特性和提示。最后，提出使用MLIR[39]将程序分解为多个较小的代码块和一个伴随的DAG，指示代码块的执行顺序。
+
+The 3rd sub-problem: Develop infrastructure in FDP-DC. Proposing guideline and 3 key features: network connect, hardware abstraction, multi-user isolation/security. Devices also have ability to provide programmable and configurable.
+第三个问题：在FDP-DC中构建硬件基础设施。提供了指导方针，确定了三个关键特性：网络连接性、硬件虚拟化、多用户隔离/安全性。设备也可以提供一定的可编程性或可配置性。
+We propose a network design to connect disaggregated devices: imaging a reconfigurable network topology architecture, using circuits switch and/or packet switch with cut-through forwarding. Above that, we propose a programmable network 
+我们提出了一个用于连接分解设备的网络设计：设想了一个可重配置的网络拓扑结构，借助电路交换和/或具有直通转发功能的分组交换来实现。在这之上，提出了一种由可编程交换机和多宿主SmartNICs组成的可编程网络基础设施，应用程序代码块和提供者管理任务可以卸载到这些设备上。我们进一步将这些多宿主smartNICs集中到一个池中，有效地分解了网络功能。
+
+
+在应用程序、编译器和硬件基础设施到位的情况下，最后缺失的部分是FDP-DC操作系统。FDP-DC操作系统将监督所有资源池和网络系统，并将代码块通过DAG映射（调度）到底层基础设施。在调度时，它将使用编译器提供的提示。
 
 10. To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
 
