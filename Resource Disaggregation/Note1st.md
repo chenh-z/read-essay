@@ -122,6 +122,71 @@ We propose a network design to connect disaggregated devices: imaging a reconfig
 
 在应用程序、编译器和硬件基础设施到位的情况下，最后缺失的部分是FDP-DC操作系统。FDP-DC操作系统将监督所有资源池和网络系统，并将代码块通过DAG映射（调度）到底层基础设施。在调度时，它将使用编译器提供的提示。
 
+ To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
+
+为了说明上述四个组件如何协同工作，我们简要讨论一个数据处理系统的端到端开发和执行流程。首先，系统开发者可以为每个操作符天价注释，指明它需要什么资源，是否打算在加速器上运行等。而且，他们还会将处理流程捕获为操作符的DAG。然后，我们的编译器将基于操作符的DAG生成代码块和它的DAG。在这个过程中，我们的编译器会决定代码块的范围并为异构设备编译每个代码块为多个二进制文件。在运行时，我们的操作系统将根据资源可用性调度代码块DAG，并动态选择硬件设备来运行代码块。操作系统还将使用DAG边信息来决定工作负载的网络拓扑和网络策略。根据网络拓扑，操作系统可能决定在可编程网络设备上执行某些代码块。最后网络设备将在一个虚拟化和隔离的环境中执行每个代码块。
+
+
+Potential route: to provide data center designers to conctruct a fully disaggreated and programmable data center.
+
+本文概述了数据中心设计者构建要给完全分解和可编程数据中心的一条可能路径。
+
+
+## 2 Background and Related Works
+
+In programmable/reconfigurable networks, resource disaggregation and programming models.
+
+### 2.1 Programmable and Reconfigurable Network
+
+## 3 FDP-DC Design
+
+All devices & networking hardware programmable and disaggregated from each other.
+Network topology can be reconfigured to best match
+
+FDP-DC: 4 components
+Then, discuss in details.
+
+
+在FDP-DC中，所有设备和网络硬件都是可编程和互相分离的。此外，网络拓扑可以被动态重置来匹配工作负载的需求。
+
+图1：四个组成部分的FDP-DC方案。
+
+抽象和编译器组成：面向用户，增强FDP-DC的可用性。
+
+操作系统和硬件基础设施：FDP-DC的组成模块，和执行编译器输出的环境。
+
+### 3.1 Abstractions and Usage Models
+
+2 abstraction:
+
+Propperties : 
+·all devices and network hardware is programmable and disaggrated each other
+·Network topology can be dynamically reconfigured to match the workload's requirements
+
+两种类型的抽象：向后兼容的透明抽象（支持传统的服务器程序和无服务器程序）、以分解为本的抽象。
+
+透明抽象：将底层FDP-DC硬件虚拟化为虚拟机的抽象。[55]证明了提供与Linux兼容接口的可行性。
+
+除了基于服务器的接口外，大量应用程序部署在无服务器计算框架上。FDP-DC可以将一个无服务器函数映射到一个设备上，并使用无服务器函数的DAG作为FDP-DC编译器的输入。
+
+以分解为本的抽象：核心思想是暴露异构设备的本质，并与之共同设计软件。开发人员可以使用新接口或对现有程序进行注释，以提供指示，或指定他们的程序如何在FDP-DC上运行。
+好处：用户更自由、更紧密地管理执行程序的方式。
+三种明确暴露FDP-DC基础设施信息的潜在方法：
+
+1.可以注释他们的数据和代码，来控制硬件的选择、放置、共位和故障处理。
+
+2.可以向开发者或应用系统管理员公开设备或网络故障域。然后可以将可能在同一故障域一起失败的函数或数据结构打包，并为每个域指定不同的故障处理机制。
+
+3.程序员将任务流指定为一个DAG来表示他们的应用程序。也可以指定多个可行的DAG，供编译器和运行时系统根据FDP-DC中可用的网络拓扑和资源选择最佳方案。
+
+Figure 1: FDP-DC 4 componements solutions
+·Abstraction && complier components : users facing and aims to enhance useability of FDP-DC
+·OS && hardware infrastructure : building blocks of FDP-DC and environment executes complier output.
+
+More Details:
+
+
+
 ### 3.2 Intermediate Representation
 
 我们提供一种以分解为本的中间表示，以支持异构硬件和应用程序。并且通过编译器来操作不同表示之间的映射。IR中调度和执行的最小单位是代码块(代码+数据）。程序中的代码块被组织成一个DAG。
@@ -187,73 +252,35 @@ FDP-DC硬件基础设施包括两个组成部分：
 关键挑战：开发一个与基础设施和工作负载共同设计的高效调度策略。
 
 
+### 3.4 OS of FDP-DC
 
- To illstrate how 4 componets work, now discuss a data processing system server2server development and execution's process
+OS和控制平面：监督所有分解的硬件和网络基础设施，覆盖整个数据中心。
+工作：资源分配、任务调度、健康监控、负载均衡、故障处理。
 
-为了说明上述四个组件如何协同工作，我们简要讨论一个数据处理系统的端到端开发和执行流程。首先，系统开发者可以为每个操作符天价注释，指明它需要什么资源，是否打算在加速器上运行等。而且，他们还会将处理流程捕获为操作符的DAG。然后，我们的编译器将基于操作符的DAG生成代码块和它的DAG。在这个过程中，我们的编译器会决定代码块的范围并为异构设备编译每个代码块为多个二进制文件。在运行时，我们的操作系统将根据资源可用性调度代码块DAG，并动态选择硬件设备来运行代码块。操作系统还将使用DAG边信息来决定工作负载的网络拓扑和网络策略。根据网络拓扑，操作系统可能决定在可编程网络设备上执行某些代码块。最后网络设备将在一个虚拟化和隔离的环境中执行每个代码块。
+#### Resource Management
 
-
-Potential route: to provide data center designers to conctruct a fully disaggreated and programmable data center.
-
-本文概述了数据中心设计者构建要给完全分解和可编程数据中心的一条可能路径。
-
-
-## 2 Background and Related Works
-
-In programmable/reconfigurable networks, resource disaggregation and programming models.
-
-### 2.1 Programmable and Reconfigurable Network
-
-## 3 FDP-DC Design
-
-All devices & networking hardware programmable and disaggregated from each other.
-Network topology can be reconfigured to best match
-
-FDP-DC: 4 components
-Then, discuss in details.
+挑战：如何有效地将应用程序映射到FDP-DC资源上。
+FDP-DC带来了超越传统整体服务器物理限制的承诺。为实现承诺，需要实现：
+1.将代码块映射到资源池
+2.使代码块不受单个设备资源性质的影响。
+调度的公平性政策和分配机制应考虑到分解设备之间的结构差异。
+为应对挑战并实现良好扩展性，采用了类似LegoOS[55]的两级方法：全局管理器执行粗粒度、架构无关分配；特定设备执行更精细的、架构感知的分配。
 
 
-在FDP-DC中，所有设备和网络硬件都是可编程和互相分离的。此外，网络拓扑可以被动态重置来匹配工作负载的需求。
+#### Fault Tolerance
 
-图1：四个组成部分的FDP-DC方案。
+为了实现容错性，提供一系列的故障处理抽象选项：尽力而为处理（暴露给应用程序）和透明处理(对应用程序隐藏)[81]。
+由于引入可重置拓扑带来的机架级故障域变化，在满足容错性和SLA（服务级别协议）的同时需要考虑拓扑结构。
 
-抽象和编译器组成：面向用户，增强FDP-DC的可用性。
 
-操作系统和硬件基础设施：FDP-DC的组成模块，和执行编译器输出的环境。
+#### Load Balance
 
-### 3.1 Abstractions and Usage Models
+控制平面最具挑战性的任务，需要在运行时高速地在分解设备之间平衡计算、数据和网络带宽。
+我们确定了两种非排他性方法来解决传统方法难以做出足够快的决策的问题。
+1）使用强化学习转化为一个学习问题。
+2）卸载到应用程序层。
 
-2 abstraction:
 
-Propperties : 
-·all devices and network hardware is programmable and disaggrated each other
-·Network topology can be dynamically reconfigured to match the workload's requirements
-
-两种类型的抽象：向后兼容的透明抽象（支持传统的服务器程序和无服务器程序）、以分解为本的抽象。
-
-透明抽象：将底层FDP-DC硬件虚拟化为虚拟机的抽象。[55]证明了提供与Linux兼容接口的可行性。
-
-除了基于服务器的接口外，大量应用程序部署在无服务器计算框架上。FDP-DC可以将一个无服务器函数映射到一个设备上，并使用无服务器函数的DAG作为FDP-DC编译器的输入。
-
-以分解为本的抽象：核心思想是暴露异构设备的本质，并与之共同设计软件。开发人员可以使用新接口或对现有程序进行注释，以提供指示，或指定他们的程序如何在FDP-DC上运行。
-好处：用户更自由、更紧密地管理执行程序的方式。
-三种明确暴露FDP-DC基础设施信息的潜在方法：
-
-1.可以注释他们的数据和代码，来控制硬件的选择、放置、共位和故障处理。
-
-2.可以向开发者或应用系统管理员公开设备或网络故障域。然后可以将可能在同一故障域一起失败的函数或数据结构打包，并为每个域指定不同的故障处理机制。
-
-3.程序员将任务流指定为一个DAG来表示他们的应用程序。也可以指定多个可行的DAG，供编译器和运行时系统根据FDP-DC中可用的网络拓扑和资源选择最佳方案。
-
-Figure 1: FDP-DC 4 componements solutions
-·Abstraction && complier components : users facing and aims to enhance useability of FDP-DC
-·OS && hardware infrastructure : building blocks of FDP-DC and environment executes complier output.
-
-More Details:
-
-### 3.1 
-
-#### Transparent abstraction
 
 
 
@@ -268,6 +295,14 @@ flexible compiler optimization
 scalable system management 
 
 high efficient programmable hardware.
+
+四个关键组成部分：
+1）易于使用的抽象
+2）灵活的编译器优化
+3）可扩展的系统管理
+4）高效的可编程硬件
+
+
 
 # Q&A:
 ## Q1. What is FDP-DC?
