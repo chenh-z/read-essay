@@ -163,6 +163,22 @@ Propperties :
 ·all devices and network hardware is programmable and disaggrated each other
 ·Network topology can be dynamically reconfigured to match the workload's requirements
 
+两种类型的抽象：向后兼容的透明抽象（支持传统的服务器程序和无服务器程序）、以分解为本的抽象。
+
+透明抽象：将底层FDP-DC硬件虚拟化为虚拟机的抽象。[55]证明了提供与Linux兼容接口的可行性。
+
+除了基于服务器的接口外，大量应用程序部署在无服务器计算框架上。FDP-DC可以将一个无服务器函数映射到一个设备上，并使用无服务器函数的DAG作为FDP-DC编译器的输入。
+
+以分解为本的抽象：核心思想是暴露异构设备的本质，并与之共同设计软件。开发人员可以使用新接口或对现有程序进行注释，以提供指示，或指定他们的程序如何在FDP-DC上运行。
+好处：用户更自由、更紧密地管理执行程序的方式。
+三种明确暴露FDP-DC基础设施信息的潜在方法：
+
+1.可以注释他们的数据和代码，来控制硬件的选择、放置、共位和故障处理。
+
+2.可以向开发者或应用系统管理员公开设备或网络故障域。然后可以将可能在同一故障域一起失败的函数或数据结构打包，并为每个域指定不同的故障处理机制。
+
+3.程序员将任务流指定为一个DAG来表示他们的应用程序。也可以指定多个可行的DAG，供编译器和运行时系统根据FDP-DC中可用的网络拓扑和资源选择最佳方案。
+
 Figure 1: FDP-DC 4 componements solutions
 ·Abstraction && complier components : users facing and aims to enhance useability of FDP-DC
 ·OS && hardware infrastructure : building blocks of FDP-DC and environment executes complier output.
