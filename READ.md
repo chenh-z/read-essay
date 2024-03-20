@@ -22,7 +22,7 @@ What did they achieved？Or how they improve performance?
 
 First in graph or schedule, last in words
 
-#### Propose/Method:
+#### Propose/Method:
 
 Contribution: theorem, algorithm, provement, how they construct
 
